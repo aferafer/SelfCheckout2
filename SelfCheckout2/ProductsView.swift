@@ -44,11 +44,11 @@ struct ProductsView: View {
                         .bold()
                         .font(.custom("San Francisco", size: 25))
                 }
-                HStack  {
+                HStack  { //outer
                     ScrollViewReader { scrollView in
                         ScrollView(.horizontal) {
                             HStack {
-                                if (searchText == "") { //If nothing is typed in product search bar.
+                                if (searchText == "") { //If nothing is typed in product search bar
                                     displayProductGroup(products: products, cartClass: cartClass, searchText: $searchText, catagory: Products.productCatagory.produce)
                                     Spacer(minLength: 70)
                                     displayProductGroup(products: products, cartClass: cartClass, searchText: $searchText, catagory: Products.productCatagory.preparedFoods)
