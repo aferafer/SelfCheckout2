@@ -35,7 +35,7 @@ struct DetailView: View {
                             searchText = "" //clear search before returning to main screen
                             action: do { self.presentationMode.wrappedValue.dismiss() }
                         })
-                            .keyboardType(.numberPad)
+                            //.keyboardType(.numberPad)
                             .padding(20)
                             .frame(width: 240, height: 100)
                             .font(.largeTitle)

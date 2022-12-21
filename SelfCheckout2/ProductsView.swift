@@ -7,12 +7,52 @@
 
 import SwiftUI
 
+
+struct SheetView: View {
+    @Environment(\.dismiss) var dismiss
+    //@ObservedObject var cartClass: CheckoutClass
+    @State var quantityDesired: Int=1
+    
+
+    var body: some View {
+        VStack {
+            Text("How many of this item would you like?")
+            HStack {
+                Spacer()
+                Button("-") {
+                    self.quantityDesired -= 1
+                }
+                .font(.system(size: 72))
+                TextField("Quantity: ", value: $quantityDesired, formatter: NumberFormatter())
+                    .font(.system(size: 100))
+                    .frame(width: 55)
+                Button("+") {
+                    self.quantityDesired += 1
+                }
+                .font(.system(size: 72))
+                Spacer()
+            }
+            Button("Add items to cart") {
+                dismiss()
+            }
+            .padding()
+            .background(.blue)
+            .foregroundColor(.black)
+            .cornerRadius(12)
+        }
+    }
+}
+ 
+
+
+
 struct ProductsView: View {
     let products: [Products]
     @ObservedObject var cartClass: CheckoutClass
     @ObservedObject var appState: AppInfo
     @State var total: Double
     @State var searchText = ""
+    @State private var showingSheet = false
     
     var searchRows = [ //only two rows should be displayed when using the product search bar due to keyboard covering content
         GridItem(.flexible()),
@@ -70,6 +110,7 @@ struct ProductsView: View {
                                                     }
                                                 } else {
                                                     CardView(product: product).id(product).onTapGesture {
+                                                        showingSheet.toggle()
                                                         searchText = "" //clear search after product has been selected
                                                         cartClass.totalPrice += Double(cartClass.priceDict[product.referenceName]!)!
                                                         let findObject = CartObject.init(cartName: product.cartName, price: cartClass.priceDict[product.referenceName]!, quantity: 1)
@@ -94,6 +135,7 @@ struct ProductsView: View {
                                                     }
                                                 } else {
                                                     CardView(product: product).id(product).onTapGesture {
+                                                        showingSheet.toggle()
                                                         searchText = ""
                                                         cartClass.totalPrice += Double(cartClass.priceDict[product.referenceName]!)!
                                                         let findObject = CartObject.init(cartName: product.cartName, price: cartClass.priceDict[product.referenceName]!, quantity: 1)
@@ -110,6 +152,9 @@ struct ProductsView: View {
                                     } //close 'product search' lazyHGrid
                                 } //close if-else that decides how to display products depending on if the product search bar is being used
                             } //close HStack containing scrollable product sections
+                            .sheet(isPresented: $showingSheet) {
+                                SheetView()
+                            }
                             if (searchText != "") { //if product search bar is active push products to top of screen so they're visible
                                 Spacer(minLength: 425)
                             }
@@ -132,34 +177,34 @@ struct ProductsView: View {
     } //body close
     
     //determines first product displayed when starting to use search bar
-    func findFirstProduct() -> Products {
-        var itemAttempt = 0
-        while ((itemAttempt < Products.productData.count-1)) { //high priority matches
-            let productN = Products.productData[itemAttempt]//current product be checked to see if its displayed
-            let productAvailable = cartClass.isAvailable[productN.referenceName]!
-            let prefixMatch = productN.searchName.hasPrefix(searchText.lowercased())
-            let isParentType = (productN.options == Products.customOptions.uniqueTypes) || (productN.options == Products.customOptions.uniqueSize)
-            if (productAvailable && prefixMatch && !isParentType) { //then product is currently displayed
-                return Products.productData[itemAttempt] //returns first item to be scrolled to
-            } else {
-                //print(productN.displayTitle + "item not displayed")
-            }
-            itemAttempt += 1
-        } //close while
-        itemAttempt = 0
-        //Second while loop looks to see if there's a low priority search match
-        while ((itemAttempt < Products.productData.count-1)) {
-            let productN = Products.productData[itemAttempt]//current product be checked to see if its displayed
-            let productAvailable = cartClass.isAvailable[productN.referenceName]!
-            let doesContain = productN.searchName.contains(searchText.lowercased())
-            let isParentType = (productN.options == Products.customOptions.uniqueTypes) || (productN.options == Products.customOptions.uniqueSize)
-            if (productAvailable && doesContain && !isParentType) { //then product is currently displayed
-                return Products.productData[itemAttempt] //returns first item to be scrolled to
-            } else {
-                //print(productN.displayTitle + "item not displayed")
-            }
-            itemAttempt += 1
-        } //close while
-        return Products(displayTitle: "error", cartName: "error", referenceName: "error", searchName: "error", pic: "error", catagory: Products.productCatagory.preparedFoods, options: Products.customOptions.noOptions)
-    }
+func findFirstProduct() -> Products {
+    var itemAttempt = 0
+    while ((itemAttempt < Products.productData.count-1)) { //high priority matches
+        let productN = Products.productData[itemAttempt]//current product be checked to see if its displayed
+        let productAvailable = cartClass.isAvailable[productN.referenceName]!
+        let prefixMatch = productN.searchName.hasPrefix(searchText.lowercased())
+        let isParentType = (productN.options == Products.customOptions.uniqueTypes) || (productN.options == Products.customOptions.uniqueSize)
+        if (productAvailable && prefixMatch && !isParentType) { //then product is currently displayed
+            return Products.productData[itemAttempt] //returns first item to be scrolled to
+        } else {
+            //print(productN.displayTitle + "item not displayed")
+        }
+        itemAttempt += 1
+    } //close while
+    itemAttempt = 0
+    //Second while loop looks to see if there's a low priority search match
+    while ((itemAttempt < Products.productData.count-1)) {
+        let productN = Products.productData[itemAttempt]//current product be checked to see if its displayed
+        let productAvailable = cartClass.isAvailable[productN.referenceName]!
+        let doesContain = productN.searchName.contains(searchText.lowercased())
+        let isParentType = (productN.options == Products.customOptions.uniqueTypes) || (productN.options == Products.customOptions.uniqueSize)
+        if (productAvailable && doesContain && !isParentType) { //then product is currently displayed
+            return Products.productData[itemAttempt] //returns first item to be scrolled to
+        } else {
+            //print(productN.displayTitle + "item not displayed")
+        }
+        itemAttempt += 1
+    } //close while
+    return Products(displayTitle: "error", cartName: "error", referenceName: "error", searchName: "error", pic: "error", catagory: Products.productCatagory.preparedFoods, options: Products.customOptions.noOptions)
+    } //function close
 } //view close
