@@ -13,6 +13,9 @@ struct DetailView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var customPrice: String = ""
     @Binding var searchText: String
+    @State private var showingSheet = false
+    @State var selectedProduct = ProductType.variationData[0] //product that has just been clicked on
+    
     let product: Products
     let referenceNames = ProductType.variationData
     var body: some View {
@@ -60,16 +63,8 @@ struct DetailView: View {
                         if (productType.parentProduct == parentType) { //display all product variations for parent product
                             Spacer()
                             ProductTypeView(myCart: myCart, productVariation: productType).onTapGesture {
-                                myCart.totalPrice += Double(myCart.priceDict[productType.referenceName]!)!
-                                let findObject = CartObject.init(cartName: productType.cartName, price: myCart.priceDict[productType.referenceName]!, quantity: 0)
-                                let itemIndex = myCart.cartObjects.firstIndex(of: findObject)
-                                if (itemIndex == nil) {
-                                    myCart.cartObjects.append(CartObject(cartName: productType.cartName, price: myCart.priceDict[productType.referenceName]!, quantity: 1)) //create new checkout object for item since none currently exist
-                                } else {
-                                    myCart.cartObjects[itemIndex!].quantity += 1 //add one to already existing checkout item
-                                }
-                                searchText = "" //clear search before returning to main screen
-                                action: do { self.presentationMode.wrappedValue.dismiss() }
+                                selectedProduct = productType
+                                showingSheet.toggle()
                                 }
                         }
                     } //ForEach
@@ -77,5 +72,57 @@ struct DetailView: View {
                 } //HStack
             }
         } //VStack
+        .sheet(isPresented: $showingSheet) {
+            specialQuantitySelect(Cart: myCart, productToAdd: $selectedProduct).onDisappear(){
+                self.presentationMode.wrappedValue.dismiss()
+            }
+        }
     } //body
 } //view
+
+struct specialQuantitySelect: View { //special quantity select is to work with the subvariations in detail view
+    @Environment(\.dismiss) var dismiss
+    @State var quantityDesired: Int=1
+    @ObservedObject var Cart: CheckoutClass
+    @Binding var productToAdd: ProductType
+    
+
+    var body: some View {
+        VStack {
+            Text("How many of this item would you like to add to your cart?")
+            HStack {
+                Spacer()
+                Button("-") {
+                    self.quantityDesired -= 1
+                }
+                .font(.system(size: 72))
+                TextField("Quantity: ", value: $quantityDesired, formatter: NumberFormatter())
+                    .font(.system(size: 100))
+                    .frame(width: 55)
+                Button("+") {
+                    self.quantityDesired += 1
+                }
+                .font(.system(size: 72))
+                Spacer()
+            }
+            Button("Add items to cart") {
+                Cart.totalPrice += Double(Cart.priceDict[productToAdd.referenceName]!)!
+                let findObject = CartObject.init(cartName: productToAdd.cartName, price: Cart.priceDict[productToAdd.referenceName]!, quantity: 0)
+                let itemIndex = Cart.cartObjects.firstIndex(of: findObject)
+                if (itemIndex == nil) {
+                    Cart.cartObjects.append(CartObject(cartName: productToAdd.cartName, price: Cart.priceDict[productToAdd.referenceName]!, quantity: 1)) //create new checkout object for item since none currently exist
+                } else {
+                    Cart.cartObjects[itemIndex!].quantity += 1 //add one to already existing checkout item
+                }
+                dismiss()
+            }
+            .padding()
+            .background(.blue)
+            .foregroundColor(.black)
+            .cornerRadius(12)
+        }
+    }
+}
+
+
+
