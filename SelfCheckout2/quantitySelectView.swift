@@ -12,22 +12,35 @@ struct quantitySelectView: View {
     @State var quantityDesired: Int=1
     @ObservedObject var Cart: CheckoutClass
     @Binding var productToAdd: Products
+    @State var quantityNumberFrameWidth = 55.00
     
 
     var body: some View {
         VStack {
-            Text("How many of this item would you like to add to your cart?")
+            Text("How many " + productToAdd.displayTitle.lowercased() + " would you like to add to your cart?")
+                .font(.system(size: 20))
             HStack {
                 Spacer()
                 Button("-") {
-                    self.quantityDesired -= 1
+                    if (quantityDesired > 0) {
+                        self.quantityDesired -= 1
+                        if (quantityDesired == 9) { //decrease width from double digit to single digit spacing
+                            quantityNumberFrameWidth = 55.00
+                        }
+                    }
                 }
                 .font(.system(size: 72))
                 TextField("Quantity: ", value: $quantityDesired, formatter: NumberFormatter())
                     .font(.system(size: 100))
-                    .frame(width: 55)
+                    .frame(width: CGFloat(quantityNumberFrameWidth))
                 Button("+") {
-                    self.quantityDesired += 1
+                    if (quantityDesired < 19) {
+                        self.quantityDesired += 1
+                        if (quantityDesired == 10) { //increase width to accomodate extra digit
+                            quantityNumberFrameWidth = 110.00
+                        }
+                    }
+                    
                 }
                 .font(.system(size: 72))
                 Spacer()

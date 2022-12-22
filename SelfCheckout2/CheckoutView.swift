@@ -26,28 +26,35 @@ struct CheckoutView: View {
             Text("Your Items")
                 .underline()
             Divider()
-            HStack {
-                Spacer()
+            Group {
                 HStack {
-                    TextField("Product Search", text: $productSearch)
-                        .padding(27)
-                        .focused($keyBoardIsFocused)
-                        .frame(width: 200, height: 35)
-                        .border(Color.black)
-                        .onReceive(Just(productSearch)) { newValue in
-                            //print(newValue)
-                            let filtered = newValue.filter { "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ".contains($0) }
-                            if filtered != newValue {
-                                self.productSearch = filtered
+                    Spacer()
+                    HStack {
+                        TextField("Product Search", text: $productSearch)
+                            .padding(40)
+                            .focused($keyBoardIsFocused)
+                            .frame(width: 210, height: 50)
+                            .border(Color.black)
+                            .onReceive(Just(productSearch)) { newValue in
+                                //print(newValue)
+                                let filtered = newValue.filter { "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ".contains($0) }
+                                if filtered != newValue {
+                                    self.productSearch = filtered
+                                }
+                                if (filtered == "") {
+                                    keyBoardIsFocused = false //if all text in search bar has been deleted then minimize keyboard
+                                }
                             }
-                            if (filtered == "") {
-                                keyBoardIsFocused = false //if all text in search bar has been deleted then minimize keyboard
-                            }
-                        }
+                    }
+                    .overlay(Image(systemName: "magnifyingglass")
+                        .offset(x: -85))
+                    Spacer()
                 }
-                .overlay(Image(systemName: "magnifyingglass")
-                    .offset(x: -85))
-                Spacer()
+                //.padding(30)
+                //.border(Color.black)
+            }
+            .onTapGesture {
+                keyBoardIsFocused = true
             }
             ScrollViewReader { scrollView in
                 ScrollView {
