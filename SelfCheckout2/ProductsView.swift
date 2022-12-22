@@ -6,45 +6,7 @@
 //
 
 import SwiftUI
-
-
-struct SheetView: View {
-    @Environment(\.dismiss) var dismiss
-    //@ObservedObject var cartClass: CheckoutClass
-    @State var quantityDesired: Int=1
-    
-
-    var body: some View {
-        VStack {
-            Text("How many of this item would you like?")
-            HStack {
-                Spacer()
-                Button("-") {
-                    self.quantityDesired -= 1
-                }
-                .font(.system(size: 72))
-                TextField("Quantity: ", value: $quantityDesired, formatter: NumberFormatter())
-                    .font(.system(size: 100))
-                    .frame(width: 55)
-                Button("+") {
-                    self.quantityDesired += 1
-                }
-                .font(.system(size: 72))
-                Spacer()
-            }
-            Button("Add items to cart") {
-                dismiss()
-            }
-            .padding()
-            .background(.blue)
-            .foregroundColor(.black)
-            .cornerRadius(12)
-        }
-    }
-}
  
-
-
 
 struct ProductsView: View {
     let products: [Products]
@@ -53,6 +15,7 @@ struct ProductsView: View {
     @State var total: Double
     @State var searchText = ""
     @State private var showingSheet = false
+    @State var selectedProduct: Products //product that has just been clicked on
     
     var searchRows = [ //only two rows should be displayed when using the product search bar due to keyboard covering content
         GridItem(.flexible()),
@@ -110,16 +73,9 @@ struct ProductsView: View {
                                                     }
                                                 } else {
                                                     CardView(product: product).id(product).onTapGesture {
+                                                        selectedProduct = product
                                                         showingSheet.toggle()
                                                         searchText = "" //clear search after product has been selected
-                                                        cartClass.totalPrice += Double(cartClass.priceDict[product.referenceName]!)!
-                                                        let findObject = CartObject.init(cartName: product.cartName, price: cartClass.priceDict[product.referenceName]!, quantity: 1)
-                                                        let itemIndex = cartClass.cartObjects.firstIndex(of: findObject)
-                                                        if (itemIndex == nil) {
-                                                            cartClass.cartObjects.append(findObject) //add new checkout object
-                                                        } else {
-                                                            cartClass.cartObjects[itemIndex!].quantity += 1 //add one to already existing checkout item
-                                                        }
                                                     }
                                                 } //end if-else
                                             } //close outer if statement
@@ -135,16 +91,9 @@ struct ProductsView: View {
                                                     }
                                                 } else {
                                                     CardView(product: product).id(product).onTapGesture {
+                                                        selectedProduct = product
                                                         showingSheet.toggle()
                                                         searchText = ""
-                                                        cartClass.totalPrice += Double(cartClass.priceDict[product.referenceName]!)!
-                                                        let findObject = CartObject.init(cartName: product.cartName, price: cartClass.priceDict[product.referenceName]!, quantity: 1)
-                                                        let itemIndex = cartClass.cartObjects.firstIndex(of: findObject)
-                                                        if (itemIndex == nil) {
-                                                            cartClass.cartObjects.append(findObject) //add new checkout object
-                                                        } else {
-                                                            cartClass.cartObjects[itemIndex!].quantity += 1 //add one to already existing checkout item
-                                                        }
                                                     }
                                                 } //end if-else
                                             } //close outer if statement
@@ -153,7 +102,7 @@ struct ProductsView: View {
                                 } //close if-else that decides how to display products depending on if the product search bar is being used
                             } //close HStack containing scrollable product sections
                             .sheet(isPresented: $showingSheet) {
-                                SheetView()
+                                quantitySelectView(Cart: cartClass, productToAdd: $selectedProduct)
                             }
                             if (searchText != "") { //if product search bar is active push products to top of screen so they're visible
                                 Spacer(minLength: 425)

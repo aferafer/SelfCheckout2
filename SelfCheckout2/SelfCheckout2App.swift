@@ -12,19 +12,13 @@ import FirebaseFirestore
 
 class AppInfo: ObservableObject {
     @Published var appState = "settingsPage" //3 states the app can be in. Settings Page is the first screen that pops up. Next is 'items page' where users can select their items. Finally clicking the checkout button brings you to the 'payments page' where you select credit, debit or cash to pay
+    @Published var showingSheet = false
 }
 
 @main
 struct SelfCheckout2App: App {
     init() {
         FirebaseApp.configure()
-        /*
-        let settings = Firestore.firestore().settings
-        settings.host = "localhost:8080"
-        settings.isPersistenceEnabled = false
-        settings.isSSLEnabled = false
-        Firestore.firestore().settings = settings
-         */
     }
     @StateObject var cartClass = CheckoutClass()
     @ObservedObject var currentState = AppInfo()
@@ -34,7 +28,7 @@ struct SelfCheckout2App: App {
                 //ScrumsView(products: Products.productData, total: 0)
                 //ChoiceView()
                 NavigationView {
-                    ProductsView(products: Products.productData, cartClass: cartClass, appState: currentState, total: 0)
+                    ProductsView(products: Products.productData, cartClass: cartClass, appState: currentState, total: 0, selectedProduct: Products.productData[0])
                 }.navigationViewStyle(StackNavigationViewStyle())
             }
             if (currentState.appState == "settingsPage") {

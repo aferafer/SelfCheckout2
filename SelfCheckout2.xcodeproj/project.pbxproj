@@ -40,6 +40,7 @@
 		0E1772E1291041B60040DD49 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 0E1772E0291041B60040DD49 /* FirebaseFirestore */; };
 		0E1772E3291041B60040DD49 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0E1772E2291041B60040DD49 /* FirebaseFirestoreSwift */; };
 		0E1772E5291041B60040DD49 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 0E1772E4291041B60040DD49 /* FirebaseFunctions */; };
+		0E772AAA2954D998008C1A69 /* quantitySelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E772AA92954D998008C1A69 /* quantitySelectView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		0E1772D129103BD30040DD49 /* CheckoutClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutClass.swift; sourceTree = "<group>"; };
 		0E1772D329103C060040DD49 /* CartObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartObject.swift; sourceTree = "<group>"; };
 		0E1772D529103F8B0040DD49 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0E772AA92954D998008C1A69 /* quantitySelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quantitySelectView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 				0E1772CC29103B410040DD49 /* Models */,
 				0E177287291031690040DD49 /* SelfCheckout2App.swift */,
 				0E177289291031690040DD49 /* ProductsView.swift */,
+				0E772AA92954D998008C1A69 /* quantitySelectView.swift */,
 				0E1772B2291036680040DD49 /* PaymentsPage.swift */,
 				0E1772B4291036B60040DD49 /* cashThankyouView.swift */,
 				0E1772B6291036E90040DD49 /* cardThankyouView.swift */,
@@ -366,6 +369,7 @@
 				0E1772BD291038640040DD49 /* CardView.swift in Sources */,
 				0E1772CE29103B500040DD49 /* Products.swift in Sources */,
 				0E1772D029103B9A0040DD49 /* ProductType.swift in Sources */,
+				0E772AAA2954D998008C1A69 /* quantitySelectView.swift in Sources */,
 				0E177288291031690040DD49 /* SelfCheckout2App.swift in Sources */,
 				0E1772BF291038B40040DD49 /* CheckoutView.swift in Sources */,
 			);
