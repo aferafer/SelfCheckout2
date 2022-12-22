@@ -15,7 +15,7 @@ struct ProductsView: View {
     @State var total: Double
     @State var searchText = ""
     @State private var showingSheet = false
-    @State var selectedProduct: Products //product that has just been clicked on
+    @State var selectedProduct = Products.productData[0] //product that has just been clicked on
     
     var searchRows = [ //only two rows should be displayed when using the product search bar due to keyboard covering content
         GridItem(.flexible()),

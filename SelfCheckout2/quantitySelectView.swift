@@ -16,7 +16,7 @@ struct quantitySelectView: View {
 
     var body: some View {
         VStack {
-            Text("How many of this item would you like?")
+            Text("How many of this item would you like to add to your cart?")
             HStack {
                 Spacer()
                 Button("-") {

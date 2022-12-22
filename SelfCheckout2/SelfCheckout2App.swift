@@ -28,7 +28,7 @@ struct SelfCheckout2App: App {
                 //ScrumsView(products: Products.productData, total: 0)
                 //ChoiceView()
                 NavigationView {
-                    ProductsView(products: Products.productData, cartClass: cartClass, appState: currentState, total: 0, selectedProduct: Products.productData[0])
+                    ProductsView(products: Products.productData, cartClass: cartClass, appState: currentState, total: 0)
                 }.navigationViewStyle(StackNavigationViewStyle())
             }
             if (currentState.appState == "settingsPage") {

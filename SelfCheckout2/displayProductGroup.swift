@@ -11,6 +11,9 @@ struct displayProductGroup: View {
     let products: [Products]
     @ObservedObject var cartClass: CheckoutClass
     @Binding var searchText: String
+    @State private var showingSheet = false
+    @State var selectedProduct = Products.productData[0] //product that has just been clicked on
+    
     var catagory: Products.productCatagory
     var rows = [
         GridItem(.flexible()),
@@ -30,6 +33,10 @@ struct displayProductGroup: View {
                         }
                     } else {
                         CardView(product: product).onTapGesture {
+                            selectedProduct = product
+                            showingSheet.toggle()
+                            
+                            /*
                             searchText = "" //clear search after product has been selected
                             cartClass.totalPrice += Double(cartClass.priceDict[product.referenceName]!)!
                             let findObject = CartObject.init(cartName: product.cartName, price: cartClass.priceDict[product.referenceName]!, quantity: 1)
@@ -39,11 +46,15 @@ struct displayProductGroup: View {
                             } else {
                                 cartClass.cartObjects[itemIndex!].quantity += 1 //add one to already existing checkout item
                             }
+                             */
                         }
                     } //end if-else
                 } //end if
                 
             } //end forEach
         } //end lazyHGrid
+        .sheet(isPresented: $showingSheet) {
+            quantitySelectView(Cart: cartClass, productToAdd: $selectedProduct)
+        }
     }
 }
