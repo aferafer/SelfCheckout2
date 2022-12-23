@@ -17,6 +17,17 @@ struct quantitySelectView: View {
 
     var body: some View {
         VStack {
+            HStack {
+                Image(systemName: "chevron.left")
+                    .offset(x: -300, y: -180)
+                    .onTapGesture {
+                        dismiss()
+                    }
+                Button("Return") {
+                    dismiss()
+                }
+                .offset(x: -300, y: -180)
+            }
             Text("How many " + productToAdd.displayTitle.lowercased() + " would you like to add to your cart?")
                 .font(.system(size: 20))
             HStack {
