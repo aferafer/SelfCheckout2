@@ -19,13 +19,14 @@ struct CheckoutView: View {
     @State private var displayMessage = "no message"
     @State var isLinkActive = false
     @Binding var productSearch: String
-    @FocusState private var keyBoardIsFocused: Bool
+    //@FocusState private var keyBoardIsFocused: Bool
     let backgroundColor = Color(red: 102/255, green: 178/255, blue: 255/255)
     var body: some View {
         VStack {
             Text("Your Items")
                 .underline()
             Divider()
+            /*
             Group {
                 HStack {
                     Spacer()
@@ -56,6 +57,8 @@ struct CheckoutView: View {
             .onTapGesture {
                 keyBoardIsFocused = true
             }
+            */
+            SearchBarView(productSearch: $productSearch)
             ScrollViewReader { scrollView in
                 ScrollView {
                     VStack {
