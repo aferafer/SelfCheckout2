@@ -46,6 +46,7 @@ struct quantitySelectView: View {
                 Spacer()
             }
             Button("Add items to cart") {
+                
                 Cart.totalPrice += Double(Cart.priceDict[productToAdd.referenceName]!)!
                 let findObject = CartObject.init(cartName: productToAdd.cartName, price: Cart.priceDict[productToAdd.referenceName]!, quantity: quantityDesired) //not quantity desired is not relevant for search but it needs to be the right quantity because if the product is not present, 'findObject' will get added to the cart
                 let itemIndex = Cart.cartObjects.firstIndex(of: findObject)

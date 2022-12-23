@@ -13,8 +13,8 @@ struct displayProductGroup: View {
     @Binding var searchText: String
     @State private var showingSheet = false
     @State var selectedProduct = Products.productData[0] //product that has just been clicked on
-    
     var catagory: Products.productCatagory
+    @Binding var clearKeyboard: Bool
     var rows = [
         GridItem(.flexible()),
         GridItem(.flexible()),
@@ -33,20 +33,9 @@ struct displayProductGroup: View {
                         }
                     } else {
                         CardView(product: product).onTapGesture {
+                            clearKeyboard = true
                             selectedProduct = product
                             showingSheet.toggle()
-                            
-                            /*
-                            searchText = "" //clear search after product has been selected
-                            cartClass.totalPrice += Double(cartClass.priceDict[product.referenceName]!)!
-                            let findObject = CartObject.init(cartName: product.cartName, price: cartClass.priceDict[product.referenceName]!, quantity: 1)
-                            let itemIndex = cartClass.cartObjects.firstIndex(of: findObject)
-                            if (itemIndex == nil) {
-                                cartClass.cartObjects.append(findObject) //add new checkout object
-                            } else {
-                                cartClass.cartObjects[itemIndex!].quantity += 1 //add one to already existing checkout item
-                            }
-                             */
                         }
                     } //end if-else
                 } //end if

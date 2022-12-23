@@ -11,7 +11,8 @@ import Combine
 struct SearchBarView: View {
     @Binding var productSearch: String
     @FocusState private var keyBoardIsFocused: Bool
-    //@Binding var keyBoardIsFocused: Bool
+    @Binding var clearKeyboard: Bool
+    
     var body: some View {
         HStack {
             Spacer()
@@ -23,7 +24,6 @@ struct SearchBarView: View {
                     .frame(width: 210, height: 50)
                     .border(Color.black)
                     .onReceive(Just(productSearch)) { newValue in
-                        //print(newValue)
                         let filtered = newValue.filter { "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ".contains($0) }
                         if filtered != newValue {
                             self.productSearch = filtered
@@ -36,6 +36,10 @@ struct SearchBarView: View {
             .overlay(Image(systemName: "magnifyingglass")
                 .offset(x: -85))
             Spacer()
+        }
+        .onChange(of: clearKeyboard) { changedVal in
+            keyBoardIsFocused = false
+            clearKeyboard = false
         }
         .onTapGesture {
             keyBoardIsFocused = true

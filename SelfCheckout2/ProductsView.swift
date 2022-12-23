@@ -16,6 +16,7 @@ struct ProductsView: View {
     @State var searchText = ""
     @State private var showingSheet = false
     @State var selectedProduct = Products.productData[0] //product that has just been clicked on
+    @State var clearKeyboard = false //tells searchBarView to clear keyboard when an item has been clicked
     
     var searchRows = [ //only two rows should be displayed when using the product search bar due to keyboard covering content
         GridItem(.flexible()),
@@ -47,18 +48,22 @@ struct ProductsView: View {
                         .bold()
                         .font(.custom("San Francisco", size: 25))
                 }
+                .contentShape(Rectangle()) //used to make sure spacer() space can be clicked on
+                .onTapGesture {
+                    clearKeyboard = true
+                }
                 HStack  { //outer
                     ScrollViewReader { scrollView in
                         ScrollView(.horizontal) {
                             HStack {
                                 if (searchText == "") { //If nothing is typed in product search bar
-                                    displayProductGroup(products: products, cartClass: cartClass, searchText: $searchText, catagory: Products.productCatagory.produce)
+                                    displayProductGroup(products: products, cartClass: cartClass, searchText: $searchText, catagory: Products.productCatagory.produce, clearKeyboard: $clearKeyboard)
                                     Spacer(minLength: 70)
-                                    displayProductGroup(products: products, cartClass: cartClass, searchText: $searchText, catagory: Products.productCatagory.preparedFoods)
+                                    displayProductGroup(products: products, cartClass: cartClass, searchText: $searchText, catagory: Products.productCatagory.preparedFoods, clearKeyboard: $clearKeyboard)
                                     Spacer(minLength: 70)
-                                    displayProductGroup(products: products, cartClass: cartClass, searchText: $searchText, catagory: Products.productCatagory.meats)
+                                    displayProductGroup(products: products, cartClass: cartClass, searchText: $searchText, catagory: Products.productCatagory.meats, clearKeyboard: $clearKeyboard)
                                     Spacer(minLength: 70)
-                                    displayProductGroup(products: products, cartClass: cartClass, searchText: $searchText, catagory: Products.productCatagory.retail)
+                                    displayProductGroup(products: products, cartClass: cartClass, searchText: $searchText, catagory: Products.productCatagory.retail, clearKeyboard: $clearKeyboard)
                                     
                                 } else { //else if something has been typed into the product search bar
                                     LazyHGrid(rows: searchRows, spacing: 10) {
@@ -117,9 +122,13 @@ struct ProductsView: View {
                     } //close scrollview reader
                     .navigationBarTitle("Go back without purchasing").navigationBarHidden(true)
                         .statusBar(hidden: true)
-                    CheckoutView(myCart: cartClass, appState: appState, productSearch: $searchText)
+                    CheckoutView(myCart: cartClass, appState: appState, productSearch: $searchText, clearKeyboard: $clearKeyboard)
                         .frame(width: 240, height: .infinity, alignment: .topTrailing)
                 } //close HStack containing 3 product sections
+                .contentShape(Rectangle()) //used to make sure spacer() space can be clicked on
+                .onTapGesture {
+                    clearKeyboard = true
+                }
             } //close VStack containing entire view
         } //close geometry reader
         .ignoresSafeArea(.keyboard, edges: .all)

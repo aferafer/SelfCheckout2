@@ -19,46 +19,15 @@ struct CheckoutView: View {
     @State private var displayMessage = "no message"
     @State var isLinkActive = false
     @Binding var productSearch: String
-    //@FocusState private var keyBoardIsFocused: Bool
+    @Binding var clearKeyboard: Bool
+    
     let backgroundColor = Color(red: 102/255, green: 178/255, blue: 255/255)
     var body: some View {
         VStack {
             Text("Your Items")
                 .underline()
             Divider()
-            /*
-            Group {
-                HStack {
-                    Spacer()
-                    HStack {
-                        TextField("Product Search", text: $productSearch)
-                            .padding(40)
-                            .focused($keyBoardIsFocused)
-                            .frame(width: 210, height: 50)
-                            .border(Color.black)
-                            .onReceive(Just(productSearch)) { newValue in
-                                //print(newValue)
-                                let filtered = newValue.filter { "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ".contains($0) }
-                                if filtered != newValue {
-                                    self.productSearch = filtered
-                                }
-                                if (filtered == "") {
-                                    keyBoardIsFocused = false //if all text in search bar has been deleted then minimize keyboard
-                                }
-                            }
-                    }
-                    .overlay(Image(systemName: "magnifyingglass")
-                        .offset(x: -85))
-                    Spacer()
-                }
-                //.padding(30)
-                //.border(Color.black)
-            }
-            .onTapGesture {
-                keyBoardIsFocused = true
-            }
-            */
-            SearchBarView(productSearch: $productSearch)
+            SearchBarView(productSearch: $productSearch, clearKeyboard: $clearKeyboard)
             ScrollViewReader { scrollView in
                 ScrollView {
                     VStack {
