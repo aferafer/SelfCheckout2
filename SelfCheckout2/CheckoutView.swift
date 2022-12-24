@@ -43,7 +43,7 @@ struct CheckoutView: View {
                     print("count: " + String(myCart.cartObjects.count))
                     scrollView.scrollTo(myCart.cartObjects.count)
                 }
-                if (myCart.cartObjects.count > 17) {
+                if (myCart.cartObjects.count > 15) {
                     Text("Display space exceeded. Scroll down to view new checkout items")
                 }
             }
