@@ -68,8 +68,6 @@ struct CheckoutView: View {
                     }
                 }
                 Button {
-                    //print(myCart.isAvailable)
-                    //print(myCart.cartObjects)
                     myCart.cartObjects = []
                     myCart.totalPrice = 0
                     productSearch = ""

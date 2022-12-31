@@ -23,6 +23,7 @@ struct PaymentsPage: View {
             paymentsPageBar(appState: appState)
             Spacer()
             Text("How would you like to pay today?")
+                .font(.system(size: 25))
             Spacer()
             HStack {
                 Spacer()

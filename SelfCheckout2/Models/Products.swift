@@ -40,7 +40,7 @@ extension Products {
     [
         //productCatagory.produce
         Products(displayTitle: "Eggs", cartName: "Dozen Eggs", referenceName: "Eggs", searchName: "eggs", pic: "eggs", catagory: productCatagory.produce, options: customOptions.noOptions),
-        Products(displayTitle: "Arugala", cartName: "Arugala Bag", referenceName: "Arugala", searchName: "arugala", pic: "arugala", catagory: productCatagory.produce, options: customOptions.noOptions),
+        Products(displayTitle: "Arugula", cartName: "Arugula Bag", referenceName: "Arugula", searchName: "arugula", pic: "arugala", catagory: productCatagory.produce, options: customOptions.noOptions),
         Products(displayTitle: "Asparagus", cartName: "Asparagus Bunch", referenceName: "Asparagus", searchName: "aparagus", pic: "asparagus", catagory: productCatagory.produce, options: customOptions.noOptions),
         Products(displayTitle: "Basil", cartName: "Basil Bunch", referenceName: "Basil", searchName: "basil", pic: "basil", catagory: productCatagory.produce, options: customOptions.noOptions),
         Products(displayTitle: "Beets", cartName: "Beet Bunch", referenceName: "Beets", searchName: "beets", pic: "beets", catagory: productCatagory.produce, options: customOptions.uniqueTypes), //options
@@ -54,7 +54,7 @@ extension Products {
         Products(displayTitle: "Broccoli", cartName: "Broccoli", referenceName: "Broccoli", searchName: "broccoli", pic: "broccoli", catagory: productCatagory.produce, options: customOptions.noOptions),
         Products(displayTitle: "Brussel Sprouts", cartName: "Brussel Sprouts", referenceName: "Brussel_Sprouts", searchName: "brussel sprouts", pic: "brussel_sprouts", catagory: productCatagory.produce, options: customOptions.noOptions),
         Products(displayTitle: "Butterhead Lettuce", cartName: "Butterhead Lettuce", referenceName: "Butterhead_Lettuce", searchName: "lettuce butterhead", pic: "butterhead_lettuce", catagory: productCatagory.produce, options: customOptions.noOptions),
-        Products(displayTitle: "Cabbage", cartName: "Cabbage", referenceName: "Cabbage", searchName: "cabbage", pic: "cabbage", catagory: productCatagory.produce, options: customOptions.noOptions),
+        Products(displayTitle: "Green Cabbage", cartName: "Green Cabbage", referenceName: "Cabbage", searchName: "cabbage", pic: "cabbage", catagory: productCatagory.produce, options: customOptions.noOptions),
         //Products(displayTitle: "Green Cabbage", cartName: "Green Cabbage Bag", referenceName: "Cabbage", searchName: "cabbage green", pic: "cabbage", catagory: productCatagory.produce, options: customOptions.noOptions), add in a sec
         Products(displayTitle: "Red Cabbage", cartName: "Red Cabbage", referenceName: "Red_Cabbage", searchName: "cabbage red", pic: "red_cabbage", catagory: productCatagory.produce, options: customOptions.noOptions),
         Products(displayTitle: "Carrots", cartName: "Carrot Bag", referenceName: "Carrots", searchName: "carrots", pic: "carrots", catagory: productCatagory.produce, options: customOptions.uniqueSize), //options
@@ -87,9 +87,9 @@ extension Products {
         Products(displayTitle: "Parsnips", cartName: "Parsnip Bag", referenceName: "Parsnips", searchName: "parsnips", pic: "parsnips", catagory: productCatagory.produce, options: customOptions.noOptions),
         Products(displayTitle: "Pea Shoots", cartName: "Pea Shoots", referenceName: "Pea_Shoots", searchName: "pea shoots", pic: "pea_shoots", catagory: productCatagory.produce, options: customOptions.noOptions),
         Products(displayTitle: "Peppers", cartName: "Pepper", referenceName: "Peppers", searchName: "peppers", pic: "peppers", catagory: productCatagory.produce, options: customOptions.uniqueTypes), //options
-        Products(displayTitle: "Colored Peppers", cartName: "Colored Pepper", referenceName: "Colored_Peppers", searchName: "peppers colored", pic: "colored_peppers", catagory: productCatagory.produce, options: customOptions.subVariation),
+        Products(displayTitle: "Colored Pepper", cartName: "Colored Pepper", referenceName: "Colored_Peppers", searchName: "peppers colored", pic: "colored_peppers", catagory: productCatagory.produce, options: customOptions.subVariation),
         Products(displayTitle: "Pepper Bag", cartName: "Pepper Bag", referenceName: "Pepper_Bag", searchName: "Mixed Pepper Bag", pic: "pepper_bag", catagory: productCatagory.produce, options: customOptions.subVariation),
-        Products(displayTitle: "Green Peppers", cartName: "Green Pepper", referenceName: "Green_Peppers", searchName: "peppers green", pic: "green_peppers", catagory: productCatagory.produce, options: customOptions.subVariation),
+        Products(displayTitle: "Green Pepper", cartName: "Green Pepper", referenceName: "Green_Peppers", searchName: "peppers green", pic: "green_peppers", catagory: productCatagory.produce, options: customOptions.subVariation),
         Products(displayTitle: "Potatoes", cartName: "Potatoes", referenceName: "Potatoes", searchName: "potatoes", pic: "potatoes", catagory: productCatagory.produce, options: customOptions.uniqueTypes),
         Products(displayTitle: "Potato Bag", cartName: "Potato Bag", referenceName: "Potato_Bag", searchName: "potato", pic: "potato_bag", catagory: productCatagory.produce, options: customOptions.subVariation),
         Products(displayTitle: "Potato Basket", cartName: "Potato Basket", referenceName: "Potato_Basket", searchName: "potato", pic: "potato_basket", catagory: productCatagory.produce, options: customOptions.subVariation),
@@ -128,22 +128,23 @@ extension Products {
         Products(displayTitle: "Hummus", cartName: "Hummus", referenceName: "Hummus", searchName: "hummus", pic: "hummus", catagory: productCatagory.preparedFoods, options: customOptions.noOptions),
         Products(displayTitle: "Kabsa", cartName: "Kabsa", referenceName: "Kabsa", searchName: "kabsa", pic: "kabsa", catagory: productCatagory.preparedFoods, options: customOptions.uniquePrice),
         //Products(displayTitle: "Beef Lasagna", cartName: "Beef Lasagana Meal", referenceName: "Beef_Lasagna", searchName: "lasagna beef", pic: "beef_lasagna", catagory: productCatagory.preparedFoods, options: customOptions.noOptions),
+        Products(displayTitle: "Kohlrabi Slaw", cartName: "Kohlrabi Slaw", referenceName: "Kohlrabi_Slaw", searchName: "kohlrabi slaw", pic: "kohlrabi_slaw", catagory: productCatagory.preparedFoods, options: customOptions.noOptions),
         Products(displayTitle: "Lasagna", cartName: "Lasagna Meal", referenceName: "Lasagna", searchName: "lasagna", pic: "lamb_lasagna", catagory: productCatagory.preparedFoods, options: customOptions.uniquePrice),
+        Products(displayTitle: "Pickled Vegetables", cartName: "Pickled Vegetable Jar", referenceName: "Pickled_Vegetables", searchName: "pickled", pic: "pickled_carrots", catagory: productCatagory.preparedFoods, options: customOptions.uniquePrice),
+        Products(displayTitle: "Pot Pie", cartName: "Pot Pie", referenceName: "Turkey_Pot_Pie", searchName: "pot pie", pic: "turkey_pot_pie", catagory: productCatagory.preparedFoods, options: customOptions.noOptions),
+        Products(displayTitle: "Relish", cartName: "Relish Jar", referenceName: "Relish", searchName: "relish zucchini", pic: "zuchinni_relish", catagory: productCatagory.preparedFoods, options: customOptions.uniquePrice),
+        Products(displayTitle: "Salsa", cartName: "Salsa Jar", referenceName: "Salsa", searchName: "salsa", pic: "salsa", catagory: productCatagory.preparedFoods, options: customOptions.noOptions),
         Products(displayTitle: "Samosas", cartName: "Samosas", referenceName: "Samosas", searchName: "samosas", pic: "samosas", catagory: productCatagory.preparedFoods, options: customOptions.noOptions),
         Products(displayTitle: "Sfeeha", cartName: "Sfeeha", referenceName: "Sfeeha", searchName: "sfeeha", pic: "sfeeha", catagory: productCatagory.preparedFoods, options: customOptions.noOptions),
-        Products(displayTitle: "Soup", cartName: "Soup", referenceName: "Soup", searchName: "soup", pic: "soup", catagory: productCatagory.preparedFoods, options: customOptions.noOptions),
-        Products(displayTitle: "Pot Pie", cartName: "Pot Pie", referenceName: "Turkey_Pot_Pie", searchName: "pot pie", pic: "turkey_pot_pie", catagory: productCatagory.preparedFoods, options: customOptions.noOptions),
+        Products(displayTitle: "Soup", cartName: "Soup", referenceName: "Soup", searchName: "soup", pic: "soup", catagory: productCatagory.preparedFoods, options: customOptions.uniquePrice),
         Products(displayTitle: "Yalanji", cartName: "Yalanji", referenceName: "Yalanji", searchName: "yalangi", pic: "yalanji", catagory: productCatagory.preparedFoods, options: customOptions.noOptions),
         //Products(displayTitle: "Pickled Asparagus", cartName: "Pickled Asparagus Jar", referenceName: "Pickled_Asparagus", searchName: "pickled asparagus", pic: "pickled_asparagus", catagory: productCatagory.preparedFoods, options: customOptions.noOptions),
         //Products(displayTitle: "Pickled Cauliflower", cartName: "Pickled Cauliflower Jar", referenceName: "Pickled_Cauliflower", searchName: "pickled cauliflower", pic: "pickled_cauliflower", catagory: productCatagory.preparedFoods, options: customOptions.noOptions),
-        Products(displayTitle: "Chutney", cartName: "Chutney Jar", referenceName: "Chutney", searchName: "chutney", pic: "chutney", catagory: productCatagory.preparedFoods, options: customOptions.noOptions),
+        //Products(displayTitle: "Chutney", cartName: "Chutney Jar", referenceName: "Chutney", searchName: "chutney", pic: "chutney", catagory: productCatagory.preparedFoods, options: customOptions.noOptions),
         //Products(displayTitle: "Dill Carrots", cartName: "Dill Carrot Jar", referenceName: "Dill_Carrots", searchName: "pickled dill carrots", pic: "dill_carrots", catagory: productCatagory.preparedFoods, options: customOptions.noOptions),
-        //Products(displayTitle: "Pickled Carrots", cartName: "Pickled Carrot Jar", referenceName: "Pickled_Carrots", searchName: "pickled carrots", pic: "pickled_carrots", catagory: productCatagory.preparedFoods, options: customOptions.noOptions),
         //Products(displayTitle: "Pickled Beets", cartName: "Pickled Beet Jar", referenceName: "Pickled_Beets", searchName: "pickled beets", pic: "pickled_beets", catagory: productCatagory.preparedFoods, options: customOptions.noOptions),
         //Products(displayTitle: "Pickled Onions", cartName: "Pickled Onion Jar", referenceName: "Pickled_Onions", searchName: "pickled onions", pic: "pickled_onions", catagory: productCatagory.preparedFoods, options: customOptions.noOptions),
-        Products(displayTitle: "Red Onion Jam", cartName: "Red Onion Jam Jar", referenceName: "Red_Onion_Jam", searchName: "jam red onion", pic: "red_onion_jam", catagory: productCatagory.preparedFoods, options: customOptions.noOptions),
-        Products(displayTitle: "Salsa", cartName: "Salsa Jar", referenceName: "Salsa", searchName: "salsa", pic: "salsa", catagory: productCatagory.preparedFoods, options: customOptions.noOptions),
-        //Products(displayTitle: "Zucchini Relish", cartName: "Zucchini Relish Jar", referenceName: "Zuchini_Relish", searchName: "relish zucchini", pic: "zuchinni_relish", catagory: productCatagory.preparedFoods, options: customOptions.noOptions),
+        //Products(displayTitle: "Red Onion Jam", cartName: "Red Onion Jam Jar", referenceName: "Red_Onion_Jam", searchName: "jam red onion", pic: "red_onion_jam", catagory: productCatagory.preparedFoods, options: customOptions.noOptions),
         
         
         //productCatagory.meats
@@ -156,12 +157,13 @@ extension Products {
         Products(displayTitle: "Ground Chicken", cartName: "Ground Chicken", referenceName: "Ground_Chicken", searchName: "ground chicken", pic: "ground_chicken", catagory: productCatagory.meats, options: customOptions.uniquePrice),
         Products(displayTitle: "Whole Chicken", cartName: "Whole Chicken", referenceName: "Whole_Chicken", searchName: "chicken whole", pic: "whole_chicken", catagory: productCatagory.meats, options: customOptions.uniquePrice),
         Products(displayTitle: "Ground Beef", cartName: "Ground Beef Pack", referenceName: "Ground_Beef", searchName: "ground beef", pic: "ground_beef", catagory: productCatagory.meats, options: customOptions.noOptions),
-        Products(displayTitle: "Steak", cartName: "Steak", referenceName: "TBone_Steak", searchName: "steak tbone", pic: "tbone_steak", catagory: productCatagory.meats, options: customOptions.uniquePrice),
+        Products(displayTitle: "Steak", cartName: "Steak", referenceName: "TBone_Steak", searchName: "steak tbone sirloin", pic: "tbone_steak", catagory: productCatagory.meats, options: customOptions.uniquePrice),
         Products(displayTitle: "Stewing Beef", cartName: "Stewing Beef Pack", referenceName: "Stewing_Beef", searchName: "stewing beef", pic: "stewing_beef", catagory: productCatagory.meats, options: customOptions.noOptions),
         
         //productCatagory.retail
         Products(displayTitle: "Baguette", cartName: "Baguette", referenceName: "Baguette", searchName: "baguette bread", pic: "baguette", catagory: productCatagory.retail, options: customOptions.noOptions),
         Products(displayTitle: "French Loaf", cartName: "French Loaf", referenceName: "French_Loaf", searchName: "french loaf bread", pic: "french_loaf", catagory: productCatagory.retail, options: customOptions.noOptions),
+        Products(displayTitle: "Sourdough", cartName: "Sourdough", referenceName: "Sourdough", searchName: "sourdough bread", pic: "sourdough", catagory: productCatagory.retail, options: customOptions.noOptions),
         Products(displayTitle: "Cacao Powder", cartName: "Cacao Powder", referenceName: "Cacao_Powder", searchName: "giddy yo cacao powder", pic: "cacao_powder", catagory: productCatagory.retail, options: customOptions.noOptions),
         Products(displayTitle: "Cheese", cartName: "Cheese Pack", referenceName: "Cheese", searchName: "cheese", pic: "cheese", catagory: productCatagory.retail, options: customOptions.uniquePrice),
         Products(displayTitle: "Chocolate Bar", cartName: "Chocolate Bar", referenceName: "Chocolate_Bar", searchName: "chocolate bar", pic: "giddy_yo", catagory: productCatagory.retail, options: customOptions.noOptions),
@@ -176,5 +178,9 @@ extension Products {
         Products(displayTitle: "Wildflower Honey", cartName: "Wildflower Honey Jar", referenceName: "Wildflower_Honey", searchName: "honey wildflower", pic: "wildflower_honey", catagory: productCatagory.retail, options: customOptions.subVariation),
         Products(displayTitle: "White Cream Honey", cartName: "White Cream Honey Jar", referenceName: "White_Cream_Honey", searchName: "honey white cream", pic: "white_cream_honey", catagory: productCatagory.retail, options: customOptions.subVariation),
         Products(displayTitle: "Cinamon Cream Honey", cartName: "Cinamon Cream Honey Jar", referenceName: "Cinamon_Cream_Honey", searchName: "honey cinamon cream", pic: "cinamon_cream_honey", catagory: productCatagory.retail, options: customOptions.subVariation),
+        Products(displayTitle: "Wood Oil", cartName: "Wood Oil", referenceName: "Wood_Oil", searchName: "wood oil", pic: "wood_oil", catagory: productCatagory.retail, options: customOptions.noOptions),
+        Products(displayTitle: "Wooden Spoon", cartName: "Wooden Spoon", referenceName: "Wooden_Spoon", searchName: "wooden spoon", pic: "wooden_spoon", catagory: productCatagory.retail, options: customOptions.noOptions),
+        Products(displayTitle: "Cutting Board", cartName: "Cutting Board", referenceName: "Cutting_Board", searchName: "cutting board wooden", pic: "cutting_board", catagory: productCatagory.retail, options: customOptions.uniquePrice),
+        
     ]
 }

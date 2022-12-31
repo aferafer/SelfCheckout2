@@ -30,8 +30,8 @@ extension ProductType {
         ProductType(parentProduct: "Onions", referenceName: "Onions", displayName: "Individual Onion", cartName: "Individual Onion", pic: "onions"),
         ProductType(parentProduct: "Onions", referenceName: "Onion_Bags", displayName: "Onion Bag", cartName: "Onion Bag", pic: "onion_bag"),
         
-        ProductType(parentProduct: "Pepper", referenceName: "Green_Peppers", displayName: "Green Peppers", cartName: "Green Pepper", pic: "green_peppers"),
-        ProductType(parentProduct: "Pepper", referenceName: "Colored_Peppers", displayName: "Colored Peppers", cartName: "Colored Pepper", pic: "colored_peppers"),
+        ProductType(parentProduct: "Pepper", referenceName: "Green_Peppers", displayName: "Green Pepper", cartName: "Green Pepper", pic: "green_peppers"),
+        ProductType(parentProduct: "Pepper", referenceName: "Colored_Peppers", displayName: "Colored Pepper", cartName: "Colored Pepper", pic: "colored_peppers"),
         ProductType(parentProduct: "Pepper", referenceName: "Pepper_Bag", displayName: "Pepper Bag", cartName: "Pepper Bag", pic: "pepper_bag"),
         
         ProductType(parentProduct: "Potatoes", referenceName: "Potato_Bag", displayName: "Potato Bag", cartName: "Potato Bag", pic: "potato_bag"),

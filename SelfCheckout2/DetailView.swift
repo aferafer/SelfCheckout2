@@ -15,14 +15,35 @@ struct DetailView: View {
     @Binding var searchText: String
     @State private var showingSheet = false
     @State var selectedProduct = ProductType.variationData[0] //product that has just been clicked on
-    
     let product: Products
+    @FocusState var focusTextField: Bool
     let referenceNames = ProductType.variationData
     var body: some View {
         VStack {
             if (product.options == Products.customOptions.uniquePrice) {
                 Text("Please Enter the Price For Your Item")
-                    .bold()
+                    .font(.system(size: 20))
+                Spacer()
+                    .frame(height: 50)
+                Text("$" + String(format: "%.2f", (Double(customPrice) ?? 0.01)/100))
+                    .font(.system(size: 30))
+                Spacer()
+                Button {
+                    if ((Double(customPrice) ?? 0) > 0) {
+                        customPrice = String(Double(customPrice)! / 100)
+                        myCart.cartObjects.append(CartObject(cartName: product.cartName, price: customPrice, quantity: 1))
+                        myCart.totalPrice += Double(customPrice)!
+                        searchText = "" //clear search before returning to main screen
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+                } label: {
+                    Text("Add Item")
+                        .padding(10)
+                        .font(.system(size: 25))
+                        .foregroundColor(Color.black)
+                        .background(Color.accentColor)
+                        .cornerRadius(12)
+                }
                 Spacer()
                     .frame(height: 50)
                 VStack {
@@ -33,23 +54,35 @@ struct DetailView: View {
                             }
                         },
                                   onCommit: {
-                            myCart.cartObjects.append(CartObject(cartName: product.cartName, price: customPrice, quantity: 1))
-                            myCart.totalPrice += Double(customPrice)!
-                            searchText = "" //clear search before returning to main screen
-                            action: do { self.presentationMode.wrappedValue.dismiss() }
+                            if ((Double(customPrice) ?? 0) > 0) {
+                                customPrice = String(Double(customPrice)! / 100)
+                                myCart.cartObjects.append(CartObject(cartName: product.cartName, price: customPrice, quantity: 1))
+                                myCart.totalPrice += Double(customPrice)!
+                                searchText = "" //clear search before returning to main screen
+                                self.presentationMode.wrappedValue.dismiss()
+                            }
                         })
-                            //.keyboardType(.numberPad)
-                            .padding(20)
-                            .frame(width: 240, height: 100)
-                            .font(.largeTitle)
-                            .border(Color.black)
+                            .keyboardType(.phonePad)
+                            .focused($focusTextField)
+                            .frame(width: 0, height: 0)
                             .onReceive(Just(customPrice)) { newValue in
-                                let filtered = newValue.filter { "0123456789.".contains($0) }
-                                if filtered != newValue {
-                                    self.customPrice = filtered
+                                if ((Double(customPrice) ?? 0) < 10000.00) {
+                                    let filtered = newValue.filter { "0123456789".contains($0) }
+                                    if (filtered != newValue) {
+                                        print(filtered.count)
+                                        self.customPrice = filtered
+                                    }
+                                } else {
+                                    let limitToFour = customPrice.dropLast()
+                                    print(limitToFour)
+                                    self.customPrice = String(limitToFour) //removes 5th added digit
                                 }
                             }
                     }
+                    .onAppear() {
+                        focusTextField = true
+                    }
+                    .offset(x:-1000)
                 }
             }
             if (product.options == Products.customOptions.uniqueTypes || product.options == Products.customOptions.uniqueSize) {
@@ -90,6 +123,17 @@ struct specialQuantitySelect: View { //special quantity select is to work with t
 
     var body: some View {
         VStack {
+            HStack {
+                Image(systemName: "chevron.left")
+                    .offset(x: -300, y: -180)
+                    .onTapGesture {
+                        dismiss()
+                    }
+                Button("Return") {
+                    dismiss()
+                }
+                .offset(x: -300, y: -180)
+            }
             Text("How many " + productToAdd.displayName.lowercased() + " would you like to add to your cart?")
                 .font(.system(size: 20))
             HStack {
@@ -104,6 +148,7 @@ struct specialQuantitySelect: View { //special quantity select is to work with t
                 }
                 .font(.system(size: 72))
                 TextField("Quantity: ", value: $quantityDesired, formatter: NumberFormatter())
+                    .disabled(true)
                     .font(.system(size: 100))
                     .frame(width: CGFloat(quantityNumberFrameWidth))
                 Button("+") {

@@ -42,6 +42,7 @@ struct quantitySelectView: View {
                 }
                 .font(.system(size: 72))
                 TextField("Quantity: ", value: $quantityDesired, formatter: NumberFormatter())
+                    .disabled(true)
                     .font(.system(size: 100))
                     .frame(width: CGFloat(quantityNumberFrameWidth))
                 Button("+") {
@@ -58,7 +59,7 @@ struct quantitySelectView: View {
             }
             Button("Add items to cart") {
                 
-                Cart.totalPrice += Double(Cart.priceDict[productToAdd.referenceName]!)!
+                Cart.totalPrice += Double(Cart.priceDict[productToAdd.referenceName]!)! * Double(quantityDesired)
                 let findObject = CartObject.init(cartName: productToAdd.cartName, price: Cart.priceDict[productToAdd.referenceName]!, quantity: quantityDesired) //not quantity desired is not relevant for search but it needs to be the right quantity because if the product is not present, 'findObject' will get added to the cart
                 let itemIndex = Cart.cartObjects.firstIndex(of: findObject)
                 if (itemIndex == nil) {
