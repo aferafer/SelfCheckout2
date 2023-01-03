@@ -22,6 +22,10 @@ struct AdminView: View {
     }
         
     //whether or not item is available and should be displayed
+    @AppStorage(isVisible.Title1.rawValue) var Title1Visible = true //title tiles for each section are visible
+    @AppStorage(isVisible.Title2.rawValue) var Title2Visible = true
+    @AppStorage(isVisible.Title3.rawValue) var Title3Visible = true
+    @AppStorage(isVisible.Title4.rawValue) var Title4Visible = true
     @AppStorage(isVisible.Carrots.rawValue) var CarrotsVisible = true //options
     @AppStorage(isVisible.Small_Carrots.rawValue) var SmallCarrotsVisible = true
     @AppStorage(isVisible.Large_Carrots.rawValue) var LargeCarrotsVisible = true
@@ -154,16 +158,20 @@ struct AdminView: View {
     @AppStorage(isVisible.Butternut_Squash.rawValue) var ButternutSquashVisible = true
     @AppStorage(isVisible.Potato_Basket.rawValue) var Potato_BasketVisible = true
     //@AppStorage(isVisible.Green_Cabbage.rawValue) var GreenCabbageVisible = true
-    @AppStorage(isVisible.Red_Cabbage.rawValue) var RedCabbageVisible = true
+    //@AppStorage(isVisible.Red_Cabbage.rawValue) var RedCabbageVisible = true
     @AppStorage(isVisible.Pea_Shoots.rawValue) var PeaShootsVisible = true
     @AppStorage(isVisible.Holey_Spinach.rawValue) var HoleySpinachVisible = true
     @AppStorage(isVisible.Holey_Beetgreens.rawValue) var Holey_BeetgreensVisible = true
+    @AppStorage(isVisible.Holey_Swiss_Chard.rawValue) var HoleySwissChardVisible = true
     
     @AppStorage(isVisible.Cutting_Board.rawValue) var CuttingBoardVisible = true
     @AppStorage(isVisible.Wooden_Spoon.rawValue) var WoodenSpoonVisible = true
     @AppStorage(isVisible.Wood_Oil.rawValue) var WoodOilVisible = true
     @AppStorage(isVisible.Kohlrabi_Slaw.rawValue) var KohlrabiSlawVisible = true
     @AppStorage(isVisible.Sourdough.rawValue) var SourdoughVisible = true
+    @AppStorage(isVisible.Roast.rawValue) var RoastVisible = true
+    
+    
     
 
     //item prices
@@ -306,16 +314,18 @@ struct AdminView: View {
     @AppStorage(price.PButternut_Squash.rawValue) var ButternutSquashPrice = "99.99"
     @AppStorage(price.PPotato_Basket.rawValue) var Potato_BasketPrice = "99.99"
     //@AppStorage(price.PGreen_Cabbage.rawValue) var GreenCabbagePrice = "99.99"
-    @AppStorage(price.PRed_Cabbage.rawValue) var RedCabbagePrice = "99.99"
+    //@AppStorage(price.PRed_Cabbage.rawValue) var RedCabbagePrice = "99.99"
     @AppStorage(price.PPea_Shoots.rawValue) var PeaShootsPrice = "99.99"
     @AppStorage(price.PHoley_Spinach.rawValue) var HoleySpinachPrice = "99.99"
     @AppStorage(price.PHoley_Beetgreens.rawValue) var Holey_BeetgreensPrice = "99.99"
+    @AppStorage(price.PHoley_Beetgreens.rawValue) var HoleySwissChardPrice = "5.25"
     
     @AppStorage(price.PCutting_Board.rawValue) var CuttingBoardPrice = "99.99"
     @AppStorage(price.PWooden_Spoon.rawValue) var WoodenSpoonPrice = "99.99"
     @AppStorage(price.PWood_Oil.rawValue) var WoodOilPrice = "99.99"
     @AppStorage(price.PKohlrabi_Slaw.rawValue) var KohlrabiSlawPrice = "99.99"
     @AppStorage(price.PSourdough.rawValue) var SourdoughPrice = "99.99"
+    @AppStorage(price.PRoast.rawValue) var RoastPrice = "99.99"
     
     
     
@@ -324,6 +334,10 @@ struct AdminView: View {
         Spacer(minLength: 10)
         Button {
             print("loading")
+            cartData.isAvailable[isVisible.Title1.rawValue] = Title1Visible
+            cartData.isAvailable[isVisible.Title2.rawValue] = Title2Visible
+            cartData.isAvailable[isVisible.Title3.rawValue] = Title3Visible
+            cartData.isAvailable[isVisible.Title4.rawValue] = Title4Visible
             cartData.isAvailable[isVisible.Beets.rawValue] = BeetsVisible
             cartData.isAvailable[isVisible.Boro_Beets.rawValue] = BeetsVisible
             cartData.isAvailable[isVisible.Cylindra_Beets.rawValue] = BeetsVisible
@@ -460,16 +474,18 @@ struct AdminView: View {
             cartData.isAvailable[isVisible.Butternut_Squash.rawValue] = ButternutSquashVisible
             cartData.isAvailable[isVisible.Potato_Basket.rawValue] = Potato_BasketVisible
             //cartData.isAvailable[isVisible.Green_Cabbage.rawValue] = GreenCabbageVisible
-            cartData.isAvailable[isVisible.Red_Cabbage.rawValue] = RedCabbageVisible
+            //cartData.isAvailable[isVisible.Red_Cabbage.rawValue] = RedCabbageVisible
             cartData.isAvailable[isVisible.Pea_Shoots.rawValue] = PeaShootsVisible
             cartData.isAvailable[isVisible.Holey_Spinach.rawValue] = HoleySpinachVisible
             cartData.isAvailable[isVisible.Holey_Beetgreens.rawValue] = Holey_BeetgreensVisible
+            cartData.isAvailable[isVisible.Holey_Swiss_Chard.rawValue] = HoleySwissChardVisible
             
             cartData.isAvailable[isVisible.Cutting_Board.rawValue] = CuttingBoardVisible
             cartData.isAvailable[isVisible.Wooden_Spoon.rawValue] = WoodenSpoonVisible
             cartData.isAvailable[isVisible.Wood_Oil.rawValue] = WoodOilVisible
             cartData.isAvailable[isVisible.Kohlrabi_Slaw.rawValue] = KohlrabiSlawVisible
             cartData.isAvailable[isVisible.Sourdough.rawValue] = SourdoughVisible
+            cartData.isAvailable[isVisible.Roast.rawValue] = RoastVisible
             
             
             
@@ -608,16 +624,18 @@ struct AdminView: View {
             cartData.priceDict[toReference(priceEnum: price.PButternut_Squash)] = ButternutSquashPrice
             cartData.priceDict[toReference(priceEnum: price.PPotato_Basket)] = Potato_BasketPrice
             //cartData.priceDict[toReference(priceEnum: price.PGreen_Cabbage)] = GreenCabbagePrice
-            cartData.priceDict[toReference(priceEnum: price.PRed_Cabbage)] = RedCabbagePrice
+            //cartData.priceDict[toReference(priceEnum: price.PRed_Cabbage)] = RedCabbagePrice
             cartData.priceDict[toReference(priceEnum: price.PPea_Shoots)] = PeaShootsPrice
             cartData.priceDict[toReference(priceEnum: price.PHoley_Spinach)] = HoleySpinachPrice
             cartData.priceDict[toReference(priceEnum: price.PHoley_Beetgreens)] = Holey_BeetgreensPrice
+            cartData.priceDict[toReference(priceEnum: price.PHoley_Swiss_Chard)] = HoleySwissChardPrice
             
             cartData.priceDict[toReference(priceEnum: price.PCutting_Board)] = CuttingBoardPrice
             cartData.priceDict[toReference(priceEnum: price.PWooden_Spoon)] = WoodenSpoonPrice
             cartData.priceDict[toReference(priceEnum: price.PWood_Oil)] = WoodOilPrice
             cartData.priceDict[toReference(priceEnum: price.PKohlrabi_Slaw)] = KohlrabiSlawPrice
             cartData.priceDict[toReference(priceEnum: price.PSourdough)] = SourdoughPrice
+            cartData.priceDict[toReference(priceEnum: price.PRoast)] = RoastPrice
             
             print(cartData.priceDict)
             Switch.appState = "itemsPage"
@@ -818,6 +836,7 @@ struct AdminView: View {
                             Toggle(isOn: $LasagnaVisible) {Text("Lasagna Visible?")}
                             //Toggle(isOn: $Pickled_AsparagusVisible) {Text("Pickled Asparagus Visible?")}
                             //Toggle(isOn: $Pickled_CauliflowerVisible) {Text("Pickled Cauliflower Visible?")}
+                            Toggle(isOn: $RoastVisible) {Text("Roast Visible?")}
                             Toggle(isOn: $SamosasVisible) {Text("Samosas Visible?")}
                             Toggle(isOn: $StewingBeefVisible) {Text("Stewing Beef Visible?")}
                             Toggle(isOn: $TBone_SteakVisible) {Text("Steak Visible?")}
@@ -946,6 +965,7 @@ struct AdminView: View {
                         Group {
                             priceEntryView(cropPrice: $SummerSquashPrice, price: SummerSquashPrice, name: "Summer Squash")
                             priceEntryView(cropPrice: $SwissChardPrice, price: SwissChardPrice, name: "Swiss Chard")
+                            priceEntryView(cropPrice: $HoleySwissChardPrice, price: HoleySwissChardPrice, name: "Not a perfect leaf Swiss Chard")
                             priceEntryView(cropPrice: $BeefsteakBagPrice, price: BeefsteakBagPrice, name: "Beefsteak Bag")
                             priceEntryView(cropPrice: $BeefsteakBasketPrice, price: BeefsteakBasketPrice, name: "Beefsteak Basket")
                             priceEntryView(cropPrice: $YellowHeirloomPrice, price: YellowHeirloomPrice, name: "Yellow Heirloom Bag")
@@ -1059,6 +1079,7 @@ struct AdminView: View {
                             priceEntryView(cropPrice: $LasagnaPrice, price: LasagnaPrice, name: "Lasagna")
                             //priceEntryView(cropPrice: $Pickled_AsparagusPrice, price: Pickled_AsparagusPrice, name: "Pickled Asparagus")
                             //priceEntryView(cropPrice: $Pickled_CauliflowerPrice, price: Pickled_CauliflowerPrice, name: "Pickled Cauliflower")
+                            priceEntryView(cropPrice: $RoastPrice, price: RoastPrice, name: "Roast")
                             priceEntryView(cropPrice: $SamosasPrice, price: SamosasPrice, name: "Samosas")
                             priceEntryView(cropPrice: $SourdoughPrice, price: SourdoughPrice, name: "Sourdough Bread")
                             priceEntryView(cropPrice: $StewingBeefPrice, price: StewingBeefPrice, name: "Stewing Beef")
@@ -1222,10 +1243,11 @@ extension AdminView {
         case PSpaghetti_Squash
         case PPotato_Basket
         //case Green_Cabbage
-        case PRed_Cabbage
+        //case PRed_Cabbage
         case PPea_Shoots
         case PHoley_Beetgreens
         case PHoley_Spinach
+        case PHoley_Swiss_Chard
         
         case PGranola
         case POnion
@@ -1236,11 +1258,15 @@ extension AdminView {
         case PWood_Oil
         case PKohlrabi_Slaw
         case PSourdough
-        //case PRoast
+        case PRoast
         
     }
     
     enum isVisible: String {
+        case Title1 //these are the 'product' types for the unclickable title tiles at the upper left corner of each section
+        case Title2
+        case Title3
+        case Title4
         case Carrots
         case Small_Carrots
         case Large_Carrots
@@ -1339,7 +1365,7 @@ extension AdminView {
         case Turkey_Pot_Pie
         case Beef_Sausage
         case Butter_Chicken_Curry
-        //case Beef_Lasagna
+        case Beef_Lasagna
         case Chutney
         case Kabsa
         case Samosas
@@ -1374,10 +1400,11 @@ extension AdminView {
         case Spaghetti_Squash
         case Potato_Basket
         //case Green_Cabbage
-        case Red_Cabbage
+        //case Red_Cabbage
         case Pea_Shoots
         case Holey_Beetgreens
         case Holey_Spinach
+        case Holey_Swiss_Chard
         
         case Granola
         case Onion
@@ -1388,6 +1415,6 @@ extension AdminView {
         case Wood_Oil
         case Kohlrabi_Slaw
         case Sourdough
-        //case Roast
+        case Roast
     }
 }

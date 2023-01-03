@@ -163,13 +163,13 @@ struct specialQuantitySelect: View { //special quantity select is to work with t
                 Spacer()
             }
             Button("Add items to cart") {
-                Cart.totalPrice += Double(Cart.priceDict[productToAdd.referenceName]!)!
+                Cart.totalPrice += Double(Cart.priceDict[productToAdd.referenceName]!)! * Double(quantityDesired)
                 let findObject = CartObject.init(cartName: productToAdd.cartName, price: Cart.priceDict[productToAdd.referenceName]!, quantity: quantityDesired)
                 let itemIndex = Cart.cartObjects.firstIndex(of: findObject)
                 if (itemIndex == nil) {
                     Cart.cartObjects.append(CartObject(cartName: productToAdd.cartName, price: Cart.priceDict[productToAdd.referenceName]!, quantity: quantityDesired)) //create new checkout object for item since none currently exist
                 } else {
-                    Cart.cartObjects[itemIndex!].quantity += 1 //add one to already existing checkout item
+                    Cart.cartObjects[itemIndex!].quantity += quantityDesired //add one to already existing checkout item
                 }
                 dismiss()
             }

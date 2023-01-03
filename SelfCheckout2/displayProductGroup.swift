@@ -15,6 +15,7 @@ struct displayProductGroup: View {
     @State var selectedProduct = Products.productData[0] //product that has just been clicked on
     var catagory: Products.productCatagory
     @Binding var clearKeyboard: Bool
+    let titleImage: String
     var rows = [
         GridItem(.flexible()),
         GridItem(.flexible()),
@@ -24,12 +25,13 @@ struct displayProductGroup: View {
     ]
     var body: some View {
         LazyHGrid(rows: rows, spacing: 10) { //
+            sectionTitleView(titleImage: titleImage)
             ForEach(products, id: \.displayTitle) { product in
-                if (product.catagory == catagory && cartClass.isAvailable[product.referenceName]! && product.options != Products.customOptions.subVariation) {
+                if (product.catagory == catagory && cartClass.isAvailable[product.referenceName]! && product.options != Products.customOptions.subVariation && product.options != Products.customOptions.sectionTitle) {
                     if (product.options != Products.customOptions.noOptions) {
                         NavigationLink(destination: DetailView(myCart: cartClass, searchText: $searchText, product: product)) {
                             CardView(product: product)
-                                
+                            
                         }
                     } else {
                         CardView(product: product).onTapGesture {
@@ -39,7 +41,6 @@ struct displayProductGroup: View {
                         }
                     } //end if-else
                 } //end if
-                
             } //end forEach
         } //end lazyHGrid
         .sheet(isPresented: $showingSheet) {

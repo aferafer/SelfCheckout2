@@ -28,7 +28,8 @@ struct Products: Hashable {
         case uniqueSize //example: small carrot bag vs large bag
         case uniqueTypes //examples: cherry tomatoes vs beefsteak tomatoes. Green peppers vs colored peppers
         case noOptions //no additional information needed
-        case subVariation //product is set to this setting when it is a variation and only to be displayed when the search bar is active
+        case subVariation //Its set to this setting when it is a variation and to be displayed when the search bar is active
+        case sectionTitle //unclickable tile that is the title for the product section: "meats, chef offerings etc"
     }
     
     var catagory: productCatagory
@@ -41,22 +42,24 @@ extension Products {
         //productCatagory.produce
         Products(displayTitle: "Eggs", cartName: "Dozen Eggs", referenceName: "Eggs", searchName: "eggs", pic: "eggs", catagory: productCatagory.produce, options: customOptions.noOptions),
         Products(displayTitle: "Arugula", cartName: "Arugula Bag", referenceName: "Arugula", searchName: "arugula", pic: "arugala", catagory: productCatagory.produce, options: customOptions.noOptions),
-        Products(displayTitle: "Asparagus", cartName: "Asparagus Bunch", referenceName: "Asparagus", searchName: "aparagus", pic: "asparagus", catagory: productCatagory.produce, options: customOptions.noOptions),
+        Products(displayTitle: "Asparagus", cartName: "Asparagus Bunch", referenceName: "Asparagus", searchName: "asparagus", pic: "asparagus", catagory: productCatagory.produce, options: customOptions.noOptions),
         Products(displayTitle: "Basil", cartName: "Basil Bunch", referenceName: "Basil", searchName: "basil", pic: "basil", catagory: productCatagory.produce, options: customOptions.noOptions),
         Products(displayTitle: "Beets", cartName: "Beet Bunch", referenceName: "Beets", searchName: "beets", pic: "beets", catagory: productCatagory.produce, options: customOptions.uniqueTypes), //options
         Products(displayTitle: "Boro Beets", cartName: "Boro Beet Bunch", referenceName: "Boro_Beets", searchName: "beets boro", pic: "boro_beets", catagory: productCatagory.produce, options: customOptions.subVariation),
         Products(displayTitle: "Cylindra Beets", cartName: "Cylindra Beet Bunch", referenceName: "Cylindra_Beets", searchName: "beets cylindra", pic: "cylindra_beets", catagory: productCatagory.produce, options: customOptions.subVariation),
         Products(displayTitle: "Golden Beets", cartName: "Golden Beet Bunch", referenceName: "Golden_Beets", searchName: "beets golden", pic: "golden_beets", catagory: productCatagory.produce, options: customOptions.subVariation),
         Products(displayTitle: "Striped Beets", cartName: "Striped Beet Bunch", referenceName: "Striped_Beets", searchName: "beets candy striped", pic: "striped_beets", catagory: productCatagory.produce, options: customOptions.subVariation),
-        Products(displayTitle: "Beet Greens", cartName: "Beet Green Bag", referenceName: "Beet_Greens", searchName: "beet greens", pic: "beet_greens", catagory: productCatagory.produce, options: customOptions.noOptions),
-        Products(displayTitle: "Not A Pefect Leaf Beet Greens", cartName: "Not A Pefect Leaf Beet Greens", referenceName: "Holey_Beetgreens", searchName: "beet greens", pic: "holey_beet_greens", catagory: productCatagory.produce, options: customOptions.noOptions),
+        //parent product Beet Greens
+        Products(displayTitle: "Beet Greens", cartName: "Beet Greens", referenceName: "Beet_Greens", searchName: "beet greens", pic: "beet_greens", catagory: productCatagory.produce, options: customOptions.uniqueTypes),
+        Products(displayTitle: "Beet Greens Regular", cartName: "Beet Green bag", referenceName: "Beet_Greens", searchName: "beet greens", pic: "beet_greens", catagory: productCatagory.produce, options: customOptions.subVariation),
+        Products(displayTitle: "Not A Pefect Leaf Beet Greens", cartName: "Not A Pefect Leaf Beet Greens", referenceName: "Holey_Beetgreens", searchName: "beet greens", pic: "holey_beet_greens", catagory: productCatagory.produce, options: customOptions.subVariation),
         Products(displayTitle: "Bok Choy", cartName: "Bok Choy Bunch", referenceName: "Bok_Choy", searchName: "bok choy", pic: "bok_choy", catagory: productCatagory.produce, options: customOptions.noOptions),
         Products(displayTitle: "Broccoli", cartName: "Broccoli", referenceName: "Broccoli", searchName: "broccoli", pic: "broccoli", catagory: productCatagory.produce, options: customOptions.noOptions),
         Products(displayTitle: "Brussel Sprouts", cartName: "Brussel Sprouts", referenceName: "Brussel_Sprouts", searchName: "brussel sprouts", pic: "brussel_sprouts", catagory: productCatagory.produce, options: customOptions.noOptions),
         Products(displayTitle: "Butterhead Lettuce", cartName: "Butterhead Lettuce", referenceName: "Butterhead_Lettuce", searchName: "lettuce butterhead", pic: "butterhead_lettuce", catagory: productCatagory.produce, options: customOptions.noOptions),
-        Products(displayTitle: "Green Cabbage", cartName: "Green Cabbage", referenceName: "Cabbage", searchName: "cabbage", pic: "cabbage", catagory: productCatagory.produce, options: customOptions.noOptions),
+        Products(displayTitle: "Cabbage", cartName: "Cabbage", referenceName: "Cabbage", searchName: "cabbage", pic: "cabbage", catagory: productCatagory.produce, options: customOptions.noOptions),
         //Products(displayTitle: "Green Cabbage", cartName: "Green Cabbage Bag", referenceName: "Cabbage", searchName: "cabbage green", pic: "cabbage", catagory: productCatagory.produce, options: customOptions.noOptions), add in a sec
-        Products(displayTitle: "Red Cabbage", cartName: "Red Cabbage", referenceName: "Red_Cabbage", searchName: "cabbage red", pic: "red_cabbage", catagory: productCatagory.produce, options: customOptions.noOptions),
+        //Products(displayTitle: "Red Cabbage", cartName: "Red Cabbage", referenceName: "Red_Cabbage", searchName: "cabbage red", pic: "red_cabbage", catagory: productCatagory.produce, options: customOptions.noOptions),
         Products(displayTitle: "Carrots", cartName: "Carrot Bag", referenceName: "Carrots", searchName: "carrots", pic: "carrots", catagory: productCatagory.produce, options: customOptions.uniqueSize), //options
         Products(displayTitle: "Small Carrot Bag", cartName: "Small Carrot Bag", referenceName: "Small_Carrots", searchName: "carrots small", pic: "carrots", catagory: productCatagory.produce, options: customOptions.subVariation),
         Products(displayTitle: "Large Carrot Bag", cartName: "Large Carrot Bag", referenceName: "Large_Carrots", searchName: "carrots large", pic: "carrots", catagory: productCatagory.produce, options: customOptions.subVariation),
@@ -100,14 +103,17 @@ extension Products {
         Products(displayTitle: "Rutabaga", cartName: "Rutabaga Bag", referenceName: "Rutabaga", searchName: "rutabaga", pic: "rutabaga", catagory: productCatagory.produce, options: customOptions.noOptions),
         Products(displayTitle: "Salad Greens", cartName: "Salad Green Bag", referenceName: "Salad_Greens", searchName: "salad greens mixed", pic: "salad_greens", catagory: productCatagory.produce, options: customOptions.noOptions),
         Products(displayTitle: "Snow Peas", cartName: "Snow Pea Bag", referenceName: "Snow_Peas", searchName: "snow peas", pic: "snow_peas", catagory: productCatagory.produce, options: customOptions.noOptions),
-        Products(displayTitle: "Spinach", cartName: "Spinach Bag", referenceName: "Spinach", searchName: "spinach", pic: "spinach", catagory: productCatagory.produce, options: customOptions.noOptions),
-        Products(displayTitle: "Not a Perfect Leaf Spinach", cartName: "Not a Perfect Leaf Spinach", referenceName: "Holey_Spinach", searchName: "spinach", pic: "holey_spinach", catagory: productCatagory.produce, options: customOptions.noOptions),
+        Products(displayTitle: "Spinach", cartName: "Spinach", referenceName: "Spinach", searchName: "spinach", pic: "spinach", catagory: productCatagory.produce, options: customOptions.uniqueTypes),
+        Products(displayTitle: "Spinach Regular", cartName: "Spinach Bag", referenceName: "Spinach", searchName: "spinach", pic: "spinach", catagory: productCatagory.produce, options: customOptions.subVariation),
+        Products(displayTitle: "Not a Perfect Leaf Spinach", cartName: "Not a Perfect Leaf Spinach", referenceName: "Holey_Spinach", searchName: "spinach", pic: "holey_spinach", catagory: productCatagory.produce, options: customOptions.subVariation),
         Products(displayTitle: "Squash", cartName: "Squash", referenceName: "Squash", searchName: "squash", pic: "winter_squash", catagory: productCatagory.produce, options: customOptions.uniquePrice),
         //Products(displayTitle: "Acorn Squash", cartName: "Acorn Squash", referenceName: "Acorn_Squash", searchName: "squash acorn", pic: "acorn_squash", catagory: productCatagory.produce, options: customOptions.subVariation),
         //Products(displayTitle: "Butternut Squash", cartName: "Butternut Squash", referenceName: "Butternut_Squash", searchName: "squash butternut", pic: "winter_squash", catagory: productCatagory.produce, options: customOptions.subVariation),
         //Products(displayTitle: "Spaghetti Squash", cartName: "Spaghetti Squash", referenceName: "Spaghetti_Squash", searchName: "squash spaghetti", pic: "spaghetti_squash", catagory: productCatagory.produce, options: customOptions.subVariation),
         Products(displayTitle: "Sweet Potatoes", cartName: "Sweet Potato Bag", referenceName: "Sweet_Potatoes", searchName: "sweet potatoes", pic: "sweet_potatoes", catagory: productCatagory.produce, options: customOptions.noOptions),
-        Products(displayTitle: "Swiss Chard", cartName: "Swiss Chard Bunch", referenceName: "Swiss_Chard", searchName: "swiss chard", pic: "swiss_chard", catagory: productCatagory.produce, options: customOptions.noOptions),
+        Products(displayTitle: "Swiss Chard", cartName: "Swiss Chard", referenceName: "Swiss_Chard", searchName: "swiss chard", pic: "swiss_chard", catagory: productCatagory.produce, options: customOptions.uniqueTypes),
+        Products(displayTitle: "Swiss Chard Regular", cartName: "Swiss Chard", referenceName: "Swiss_Chard", searchName: "swiss chard", pic: "swiss_chard", catagory: productCatagory.produce, options: customOptions.subVariation),
+        Products(displayTitle: "Not a Perfect Leaf Swiss Chard", cartName: "Not a Perfect Leaf Swiss Chard", referenceName: "Holey_Swiss_Chard", searchName: "swiss chard", pic: "holey_swiss_chard", catagory: productCatagory.produce, options: customOptions.subVariation),
         Products(displayTitle: "Tatsoi", cartName: "Tatsoi Bunch", referenceName: "Tatsoi", searchName: "tatsoi", pic: "tatsoi", catagory: productCatagory.produce, options: customOptions.noOptions),
         Products(displayTitle: "Tomatoes", cartName: "Tomato", referenceName: "Tomatoes", searchName: "tomatoes", pic: "beefsteak", catagory: productCatagory.produce, options: customOptions.uniqueTypes),
         Products(displayTitle: "Yellow Heirloom Bag", cartName: "Yellow Heirloom", referenceName: "Yellow_Heirloom", searchName: "tomatoes yellow heirloom", pic: "yellow_heirloom_bag", catagory: productCatagory.produce, options: customOptions.subVariation),
@@ -131,7 +137,7 @@ extension Products {
         Products(displayTitle: "Kohlrabi Slaw", cartName: "Kohlrabi Slaw", referenceName: "Kohlrabi_Slaw", searchName: "kohlrabi slaw", pic: "kohlrabi_slaw", catagory: productCatagory.preparedFoods, options: customOptions.noOptions),
         Products(displayTitle: "Lasagna", cartName: "Lasagna Meal", referenceName: "Lasagna", searchName: "lasagna", pic: "lamb_lasagna", catagory: productCatagory.preparedFoods, options: customOptions.uniquePrice),
         Products(displayTitle: "Pickled Vegetables", cartName: "Pickled Vegetable Jar", referenceName: "Pickled_Vegetables", searchName: "pickled", pic: "pickled_carrots", catagory: productCatagory.preparedFoods, options: customOptions.uniquePrice),
-        Products(displayTitle: "Pot Pie", cartName: "Pot Pie", referenceName: "Turkey_Pot_Pie", searchName: "pot pie", pic: "turkey_pot_pie", catagory: productCatagory.preparedFoods, options: customOptions.noOptions),
+        Products(displayTitle: "Pot Pie", cartName: "Pot Pie", referenceName: "Turkey_Pot_Pie", searchName: "pot pie", pic: "turkey_pot_pie", catagory: productCatagory.preparedFoods, options: customOptions.uniquePrice),
         Products(displayTitle: "Relish", cartName: "Relish Jar", referenceName: "Relish", searchName: "relish zucchini", pic: "zuchinni_relish", catagory: productCatagory.preparedFoods, options: customOptions.uniquePrice),
         Products(displayTitle: "Salsa", cartName: "Salsa Jar", referenceName: "Salsa", searchName: "salsa", pic: "salsa", catagory: productCatagory.preparedFoods, options: customOptions.noOptions),
         Products(displayTitle: "Samosas", cartName: "Samosas", referenceName: "Samosas", searchName: "samosas", pic: "samosas", catagory: productCatagory.preparedFoods, options: customOptions.noOptions),
@@ -157,6 +163,7 @@ extension Products {
         Products(displayTitle: "Ground Chicken", cartName: "Ground Chicken", referenceName: "Ground_Chicken", searchName: "ground chicken", pic: "ground_chicken", catagory: productCatagory.meats, options: customOptions.uniquePrice),
         Products(displayTitle: "Whole Chicken", cartName: "Whole Chicken", referenceName: "Whole_Chicken", searchName: "chicken whole", pic: "whole_chicken", catagory: productCatagory.meats, options: customOptions.uniquePrice),
         Products(displayTitle: "Ground Beef", cartName: "Ground Beef Pack", referenceName: "Ground_Beef", searchName: "ground beef", pic: "ground_beef", catagory: productCatagory.meats, options: customOptions.noOptions),
+        Products(displayTitle: "Roast", cartName: "Roast", referenceName: "Roast", searchName: "roast", pic: "roast", catagory: productCatagory.meats, options: customOptions.uniquePrice),
         Products(displayTitle: "Steak", cartName: "Steak", referenceName: "TBone_Steak", searchName: "steak tbone sirloin", pic: "tbone_steak", catagory: productCatagory.meats, options: customOptions.uniquePrice),
         Products(displayTitle: "Stewing Beef", cartName: "Stewing Beef Pack", referenceName: "Stewing_Beef", searchName: "stewing beef", pic: "stewing_beef", catagory: productCatagory.meats, options: customOptions.noOptions),
         

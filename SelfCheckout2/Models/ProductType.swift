@@ -25,6 +25,10 @@ extension ProductType {
         ProductType(parentProduct: "Beet Bunch", referenceName: "Striped_Beets", displayName: "Striped Beets", cartName: "Striped Beet Bag", pic: "striped_beets"),
         ProductType(parentProduct: "Beet Bunch", referenceName: "Cylindra_Beets", displayName: "Cylindra Beets", cartName: "Cylindra Beet Bag", pic: "cylindra_beets"),
         ProductType(parentProduct: "Beet Bunch", referenceName: "Golden_Beets", displayName: "Golden Beets", cartName: "Golden Beet Bag", pic: "golden_beets"),
+        
+        ProductType(parentProduct: "Beet Greens", referenceName: "Beet_Greens", displayName: "Beet Greens", cartName: "Beet Greens", pic: "beet_greens"),
+        ProductType(parentProduct: "Beet Greens", referenceName: "Holey_Beetgreens", displayName: "Not a Perfect Leaf", cartName: "Not a Perfect Leaf Beet Greens", pic: "holey_beet_greens"),
+        
         ProductType(parentProduct: "Granola", referenceName: "Small_Granola", displayName: "Regular Granola", cartName: "Regular Granola", pic: "small_granola"),
         ProductType(parentProduct: "Granola", referenceName: "Large_Granola", displayName: "Grain Free Granola", cartName: "Grain Free Granola", pic: "large_granola"),
         ProductType(parentProduct: "Onions", referenceName: "Onions", displayName: "Individual Onion", cartName: "Individual Onion", pic: "onions"),
@@ -36,6 +40,12 @@ extension ProductType {
         
         ProductType(parentProduct: "Potatoes", referenceName: "Potato_Bag", displayName: "Potato Bag", cartName: "Potato Bag", pic: "potato_bag"),
         ProductType(parentProduct: "Potatoes", referenceName: "Potato_Basket", displayName: "Potato Basket", cartName: "Potato Basket", pic: "potato_basket"),
+        
+        ProductType(parentProduct: "Spinach", referenceName: "Spinach", displayName: "Spinach", cartName: "Spinach Bag", pic: "spinach"),
+        ProductType(parentProduct: "Spinach", referenceName: "Holey_Spinach", displayName: "Not a Perfect Leaf Spinach", cartName: "Not a Perfect Leaf Spinach", pic: "holey_spinach"),
+        
+        ProductType(parentProduct: "Swiss Chard", referenceName: "Swiss_Chard", displayName: "Swiss Chard", cartName: "Swiss Chard", pic: "swiss_chard"),
+        ProductType(parentProduct: "Swiss Chard", referenceName: "Holey_Swiss_Chard", displayName: "Not a Perfect Leaf", cartName: "Not a Perfect Leaf Swiss Chard", pic: "holey_swiss_chard"),
         
         ProductType(parentProduct: "Squash", referenceName: "Butternut_Squash", displayName: "Butternut Squash", cartName: "Butternut Squash", pic: "winter_squash"),
         ProductType(parentProduct: "Squash", referenceName: "Acorn_Squash", displayName: "Acorn Squash", cartName: "Acorn Squash", pic: "acorn_squash"),

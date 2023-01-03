@@ -40,6 +40,7 @@ struct SearchBarView: View {
         .onChange(of: clearKeyboard) { changedVal in
             keyBoardIsFocused = false
             clearKeyboard = false
+            productSearch = ""
         }
         .onTapGesture {
             keyBoardIsFocused = true

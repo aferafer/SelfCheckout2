@@ -57,13 +57,13 @@ struct ProductsView: View {
                         ScrollView(.horizontal) {
                             HStack {
                                 if (searchText == "") { //If nothing is typed in product search bar
-                                    displayProductGroup(products: products, cartClass: cartClass, searchText: $searchText, catagory: Products.productCatagory.produce, clearKeyboard: $clearKeyboard)
+                                    displayProductGroup(products: products, cartClass: cartClass, searchText: $searchText, catagory: Products.productCatagory.produce, clearKeyboard: $clearKeyboard, titleImage: "eggs_and_produce")
                                     Spacer(minLength: 70)
-                                    displayProductGroup(products: products, cartClass: cartClass, searchText: $searchText, catagory: Products.productCatagory.preparedFoods, clearKeyboard: $clearKeyboard)
+                                    displayProductGroup(products: products, cartClass: cartClass, searchText: $searchText, catagory: Products.productCatagory.meats, clearKeyboard: $clearKeyboard, titleImage: "meats")
                                     Spacer(minLength: 70)
-                                    displayProductGroup(products: products, cartClass: cartClass, searchText: $searchText, catagory: Products.productCatagory.meats, clearKeyboard: $clearKeyboard)
+                                    displayProductGroup(products: products, cartClass: cartClass, searchText: $searchText, catagory: Products.productCatagory.preparedFoods, clearKeyboard: $clearKeyboard, titleImage: "prepared_foods")
                                     Spacer(minLength: 70)
-                                    displayProductGroup(products: products, cartClass: cartClass, searchText: $searchText, catagory: Products.productCatagory.retail, clearKeyboard: $clearKeyboard)
+                                    displayProductGroup(products: products, cartClass: cartClass, searchText: $searchText, catagory: Products.productCatagory.retail, clearKeyboard: $clearKeyboard, titleImage: "retail")
                                     
                                 } else { //else if something has been typed into the product search bar
                                     LazyHGrid(rows: searchRows, spacing: 10) {

@@ -53,11 +53,11 @@ struct CheckoutView: View {
                 Text("$" + String(format: "%.2f", myCart.totalPrice))
             }
             HStack {
-                NavigationLink(destination: Text("OtherView"), isActive: $isLinkActive) {
+                NavigationLink(destination: Text("other view"), isActive: $isLinkActive) {
                     Button {
                         if (myCart.totalPrice > 0) {
                             //writeToDatabase()
-                            appState.appState = "paymentsPage"
+                            //appState.appState = "paymentsPage"
                         }
                     } label: {
                         Text("Checkout")

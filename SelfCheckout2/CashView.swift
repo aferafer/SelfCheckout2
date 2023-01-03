@@ -45,15 +45,41 @@ struct CashView: View {
         
     }
     
-    func createPurchaseString(paymentType: Int) -> [String: Any]{
+    func createPurchaseString(paymentType: Int) -> [String: Any] {
         var purchaseList = [String:Int]()
+        var itemsAdded: [CartObject] = []
         let seconds = Date().timeIntervalSince1970
         purchaseList["transactionOrder"] = Int(seconds)
         purchaseList["payment type"] = 3
         purchaseList["CashTotal"] = Int(Float(myCart.totalPrice) * 100)
         for purchaseItem in myCart.cartObjects {
-            purchaseList[purchaseItem.cartName] = purchaseItem.quantity * Int((Float(purchaseItem.price)!) * 100)
+            if ((itemsAdded).contains(purchaseItem)) { //combine custom price values
+                print("to start: purchase item price is")
+                print(purchaseItem.price)
+                let itemIndex = itemsAdded.firstIndex(of: purchaseItem)!
+                let oldItem = itemsAdded[itemIndex] //save old item to be deleted
+                print("old item price: " + String(oldItem.price))
+                let oldItemPrice = Int(oldItem.price)! //price of the old item
+                let newItemPrice = Int((Float(purchaseItem.price)!) * 100)
+                itemsAdded.remove(at: itemIndex)
+                let combinedPrice = oldItemPrice + newItemPrice //add old items price
+                var purchaseItemCopy = purchaseItem //copy of purchase item
+                purchaseItemCopy.price = String(combinedPrice)
+                itemsAdded.append(purchaseItemCopy)
+                //print(purchaseItemCopy)
+                //print(purchaseItemCopy.price)
+                purchaseList[purchaseItemCopy.cartName] = nil //remove from actual dictionary as well
+                purchaseList[purchaseItemCopy.cartName] = combinedPrice //updated value with new price
+            } else { //add new product as usual
+                var purchaseItemCopy2 = purchaseItem
+                purchaseItemCopy2.price = String(Int((Float(purchaseItem.price)!) * 100))
+                itemsAdded.append(purchaseItemCopy2)
+                
+                purchaseList[purchaseItem.cartName] = purchaseItem.quantity * Int((Float(purchaseItem.price)!) * 100)
+            }
         }
+        print("look here:")
+        print(purchaseList)
         return purchaseList
     }
 }
