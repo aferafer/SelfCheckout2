@@ -22,10 +22,7 @@ struct AdminView: View {
     }
         
     //whether or not item is available and should be displayed
-    @AppStorage(isVisible.Title1.rawValue) var Title1Visible = true //title tiles for each section are visible
-    @AppStorage(isVisible.Title2.rawValue) var Title2Visible = true
-    @AppStorage(isVisible.Title3.rawValue) var Title3Visible = true
-    @AppStorage(isVisible.Title4.rawValue) var Title4Visible = true
+    @AppStorage(isVisible.Chef_Special.rawValue) var ChefSpecialVisible = false //options
     @AppStorage(isVisible.Carrots.rawValue) var CarrotsVisible = true //options
     @AppStorage(isVisible.Small_Carrots.rawValue) var SmallCarrotsVisible = true
     @AppStorage(isVisible.Large_Carrots.rawValue) var LargeCarrotsVisible = true
@@ -333,11 +330,8 @@ struct AdminView: View {
     var body: some View {
         Spacer(minLength: 10)
         Button {
-            print("loading")
-            cartData.isAvailable[isVisible.Title1.rawValue] = Title1Visible
-            cartData.isAvailable[isVisible.Title2.rawValue] = Title2Visible
-            cartData.isAvailable[isVisible.Title3.rawValue] = Title3Visible
-            cartData.isAvailable[isVisible.Title4.rawValue] = Title4Visible
+            cartData.isAvailable[isVisible.Chef_Special.rawValue] = ChefSpecialVisible
+            cartData.isAvailable[isVisible.Beets.rawValue] = BeetsVisible
             cartData.isAvailable[isVisible.Beets.rawValue] = BeetsVisible
             cartData.isAvailable[isVisible.Boro_Beets.rawValue] = BeetsVisible
             cartData.isAvailable[isVisible.Cylindra_Beets.rawValue] = BeetsVisible
@@ -760,6 +754,7 @@ struct AdminView: View {
                             .bold()
                             .font(.custom("San Francisco", size: 25))
                         Group {
+                            Toggle(isOn: $ChefSpecialVisible) {Text("Chef Special Visible?")}
                             Toggle(isOn: $BaklavaVisible) {Text("Baklava Visible?")}
                             Toggle(isOn: $CarrotCakeVisible) {Text("Carrot Cake Visible?")}
                             Toggle(isOn: $ChutneyVisible) {Text("Chutney Visible?")}
@@ -1263,10 +1258,7 @@ extension AdminView {
     }
     
     enum isVisible: String {
-        case Title1 //these are the 'product' types for the unclickable title tiles at the upper left corner of each section
-        case Title2
-        case Title3
-        case Title4
+        case Chef_Special
         case Carrots
         case Small_Carrots
         case Large_Carrots

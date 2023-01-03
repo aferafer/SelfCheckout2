@@ -144,14 +144,7 @@ extension Products {
         Products(displayTitle: "Sfeeha", cartName: "Sfeeha", referenceName: "Sfeeha", searchName: "sfeeha", pic: "sfeeha", catagory: productCatagory.preparedFoods, options: customOptions.noOptions),
         Products(displayTitle: "Soup", cartName: "Soup", referenceName: "Soup", searchName: "soup", pic: "soup", catagory: productCatagory.preparedFoods, options: customOptions.uniquePrice),
         Products(displayTitle: "Yalanji", cartName: "Yalanji", referenceName: "Yalanji", searchName: "yalangi", pic: "yalanji", catagory: productCatagory.preparedFoods, options: customOptions.noOptions),
-        //Products(displayTitle: "Pickled Asparagus", cartName: "Pickled Asparagus Jar", referenceName: "Pickled_Asparagus", searchName: "pickled asparagus", pic: "pickled_asparagus", catagory: productCatagory.preparedFoods, options: customOptions.noOptions),
-        //Products(displayTitle: "Pickled Cauliflower", cartName: "Pickled Cauliflower Jar", referenceName: "Pickled_Cauliflower", searchName: "pickled cauliflower", pic: "pickled_cauliflower", catagory: productCatagory.preparedFoods, options: customOptions.noOptions),
-        //Products(displayTitle: "Chutney", cartName: "Chutney Jar", referenceName: "Chutney", searchName: "chutney", pic: "chutney", catagory: productCatagory.preparedFoods, options: customOptions.noOptions),
-        //Products(displayTitle: "Dill Carrots", cartName: "Dill Carrot Jar", referenceName: "Dill_Carrots", searchName: "pickled dill carrots", pic: "dill_carrots", catagory: productCatagory.preparedFoods, options: customOptions.noOptions),
-        //Products(displayTitle: "Pickled Beets", cartName: "Pickled Beet Jar", referenceName: "Pickled_Beets", searchName: "pickled beets", pic: "pickled_beets", catagory: productCatagory.preparedFoods, options: customOptions.noOptions),
-        //Products(displayTitle: "Pickled Onions", cartName: "Pickled Onion Jar", referenceName: "Pickled_Onions", searchName: "pickled onions", pic: "pickled_onions", catagory: productCatagory.preparedFoods, options: customOptions.noOptions),
-        //Products(displayTitle: "Red Onion Jam", cartName: "Red Onion Jam Jar", referenceName: "Red_Onion_Jam", searchName: "jam red onion", pic: "red_onion_jam", catagory: productCatagory.preparedFoods, options: customOptions.noOptions),
-        
+        Products(displayTitle: "Chef Special", cartName: "Chef Special", referenceName: "Chef_Special", searchName: "chef special", pic: "chef_special", catagory: productCatagory.preparedFoods, options: customOptions.uniquePrice),
         
         //productCatagory.meats
         Products(displayTitle: "Beef Burgers", cartName: "Beef Burger Pack", referenceName: "Beef_Burgers", searchName: "burgers beef", pic: "beef_burgers", catagory: productCatagory.meats, options: customOptions.noOptions),
